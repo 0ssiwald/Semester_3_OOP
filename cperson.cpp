@@ -52,12 +52,15 @@ void CCustomer::load(std::ifstream &file) {
    }
 }
 
-void CCustomer::print() {
-      std::cout << name << " (Kundennr.: " << customerNr << ")" << std::endl;
-      address.print();
-      std::cout << std::endl << "* ";
-      birthday.print();
-   }
+std::ostream &operator<<(std::ostream &ostr, CCustomer &cust) {
+      ostr << cust.name << " (Kundennr.: " << cust.customerNr << ")" << std::endl;
+      ostr << cust.address << std::endl << "* " << cust.birthday;
+      return ostr;
+}
+
+CCustomer::~CCustomer() {
+      std::cout << "Der Kunde '" << name << "' wird vernichtet!" << std::endl;
+}
 
 void CEmployee::load(std::ifstream &file) {
    std::string s;
@@ -82,10 +85,9 @@ void CEmployee::load(std::ifstream &file) {
    }
 }
 
-void CEmployee::print() {
-      std::cout << name << " (Kundennr.: " << customerNr << " / Personalnr.: " << employeeNr << ")" << std::endl;
-      address.print();
-      std::cout << std::endl << "* ";
-      birthday.print();
+std::ostream &operator<<(std::ostream &ostr, CEmployee &emp) {
+      ostr << emp.name << " (Kundennr.: " << emp.customerNr << " / Personalnr.: " << emp.employeeNr << ")" << std::endl;
+      ostr << emp.address << std::endl << "* " << emp.birthday;
+      return ostr;
    }
 

@@ -2,30 +2,25 @@
 #include "clibrarypool.h"
 #include "parse.h"
 
-#define MAX_LEN 101
+//#define MAX_LEN 101
 
-
-
-void CLibraryPool::print() {
-   std::cout << name << std::endl << "Leitung ";
-   boss->print();
-   std::cout << std::endl << "\nZum Buechereiverband gehoeren " << stores.size() << " Filialen:\n" << std::endl;
-   for(unsigned int i = 0; i < stores.size(); i++) {
-      stores[i]->print();
-      std::cout << std::endl;
-   }
-   std::cout << std::endl << "Der Buechereiverband hat " << costumers.size() << " Kunden:" << std::endl;
-   for(unsigned int i = 0; i < costumers.size(); i++) {
-      std::cout << std::endl;
-      costumers[i]->print();
-      std::cout << std::endl;
-   }
+std::ostream &operator<<(std::ostream &ostr, const CLibraryPool &l_pool) {
+   ostr << l_pool.name << std::endl << "Leitung "<< *l_pool.boss << std::endl;
+   ostr << "\nZum Buechereiverband gehoeren " << l_pool.stores.size() << " Filialen:\n" << std::endl;
+   for(unsigned int i = 0; i < l_pool.stores.size(); i++)
+      ostr << *l_pool.stores[i] << std::endl;
+   ostr << std::endl << "Der Buechereiverband hat " << l_pool.costumers.size() << " Kunden:" << std::endl;
+   for(unsigned int i = 0; i < l_pool.costumers.size(); i++)
+      ostr << std::endl << *l_pool.costumers[i] << std::endl << std::endl;
+   ostr << "Folgende " << l_pool.loans.size() << " Medien sind ausgeliehen:" << std::endl;
+   for(unsigned int i = 0; i < l_pool.loans.size(); i++)
+      ostr << std::endl << *l_pool.loans[i] << std::endl;
+   return ostr;
 }
 
 CLibraryPool::CLibraryPool(std::string file_name) {
    std::ifstream file;
    file.open(file_name, std::ios::binary | std::ios::in);
-
    std::string s;
 
    if(file) {
@@ -44,6 +39,24 @@ CLibraryPool::CLibraryPool(std::string file_name) {
             costumers.push_back(pC);
          } else if(s.find("<Name>") != std::string::npos) {
             name = parseLine(s, "<Name>", "</Name>");
+         } else if(s.find("<Loan>") != std::string::npos) {
+            CLoan *pLoan = new CLoan;
+            sNumbers Ids = pLoan->load(file);
+            for(unsigned int i = 0; i < costumers.size(); i++) {
+               if(Ids.customer_nr == costumers[i]->getCustomerNr()) {
+                  pLoan->setCustomer(costumers[i]);
+                  costumers[i]->addLoan(pLoan);
+               }
+            }
+            for(unsigned int i = 0; i < stores.size(); i++) {
+               for(unsigned int j = 0; j < stores[i]->getMedia().size(); j++) {
+                  if(Ids.medium_nr == stores[i]->getMedia()[j]->getSignature()) {
+                     pLoan->setMedium(stores[i]->getMedia()[j]);
+                     stores[i]->getMedia()[j]->setStatus(1);
+                  }
+               }
+            }
+            loans.push_back(pLoan);
          }
       }
       file.close();
@@ -56,4 +69,8 @@ CLibraryPool::~CLibraryPool() {
       delete stores[i];
    for(unsigned int i = 0; i < costumers.size(); i++)
       delete costumers[i];
+   for(unsigned int i = 0; i < loans.size(); i++)
+      delete loans[i];
 }
+
+

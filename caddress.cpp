@@ -2,6 +2,11 @@
 #include "caddress.h"
 
 
+std::ostream &operator<<(std::ostream &ostr, const CAddress &addr) {
+   ostr << addr.street << " " << addr.number << "; " << addr.zipcode << " " << addr.town;
+   return ostr;
+}
+
 void CAddress::load(std::ifstream &file) {
    std::string s;
    if(file){

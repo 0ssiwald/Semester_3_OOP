@@ -2,12 +2,16 @@
 #define CPERSON_H_INCLUDED
 
 #include <iostream>
+#include <vector>
 #include <string>
 #include <fstream>
 #include "cdate.h"
 #include "caddress.h"
+#include "cloan.h"
+//forward declaration : https://stackoverflow.com/questions/625799/resolve-build-errors-due-to-circular-dependency-amongst-classes
+class CLoan;
 
-class CPerson{
+class CPerson {
 
 protected:
       std::string name;
@@ -22,7 +26,9 @@ public:
    ~CPerson() {
       std::cout << "Die Person '" << name << "' wird vernichtet!" << std::endl;
    }
-
+   std::string getName() {
+      return name;
+   }
    // void print();
    // void load(std::ifstream &);
 };
@@ -31,17 +37,22 @@ class CCustomer: virtual public CPerson {
 
 protected:
    std::string customerNr;
+   std::vector<CLoan*> loans;
 
 public:
    CCustomer(std::string n, CAddress a, CDate b, std::string nr)
       : CPerson(n, a, b), customerNr(nr) {}
    CCustomer() {}
-   ~CCustomer() {
-      std::cout << "Der Kunde '" << name << "' wird vernichtet!" << std::endl;
-   }
+   ~CCustomer();
 
+   std::string getCustomerNr() {
+      return customerNr;
+   }
+   void addLoan(CLoan *L) {
+      loans.push_back(L);
+   }
    void load(std::ifstream &);
-   void print();
+   friend std::ostream &operator<<(std::ostream &, CCustomer &);
 };
 
 class CEmployee: virtual public CPerson, public CCustomer {
@@ -57,7 +68,7 @@ public:
    }
 
    void load(std::ifstream &);
-   void print();
+   friend std::ostream &operator<<(std::ostream &, CEmployee &);
 };
 
 #endif

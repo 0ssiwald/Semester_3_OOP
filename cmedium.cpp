@@ -9,18 +9,23 @@ std::string CMedium::getStatus() {
          case reserviert: return "reserviert";
          default: return "unbekannt";
       }
-   }
-void CMedium::print() {
-   std::cout << "Titel:        " << title << std::endl;
-   std::cout << "Signatur:     " << signature << std::endl;
-   std::cout << "Ort:          ";
-   place.print();
-   std::cout << std::endl;
-   std::cout << "FSK:          " << "freigegeben ab " << age_rating << " Jahren" << std::endl;
-   std::cout << "Status:       " << getStatus();
+}
+
+std::ostream &operator<<(std::ostream &ostr, CMedium &med) {
+   return med.print(ostr);
+}
+
+std::ostream & CMedium::print(std::ostream &ostr) {
+   ostr << "Titel:        " << title << std::endl;
+   ostr << "Signatur:     " << signature << std::endl;
+   ostr << "Ort:          " << place << std::endl;
+   ostr << "FSK:          " << "freigegeben ab " << age_rating << " Jahren" << std::endl;
+   ostr << "Status:       " << getStatus() << std::endl;
+   return ostr;
 }
 
 void CMedium::parseMedium(std::ifstream &file, std::string s) {
+   status = verfuegbar;
    if(s.find("<Title>") != std::string::npos) {
       title = parseLine(s,"<Title>", "</Title>");
    } else if(s.find("<Signatur>") != std::string::npos) {
@@ -30,15 +35,16 @@ void CMedium::parseMedium(std::ifstream &file, std::string s) {
       L.load(file);
    } else if(s.find("<FSK>") != std::string::npos) {
       age_rating = stoi(parseLine(s,"<FSK>", "</FSK>"));
-   } else if(s.find("<Status>") != std::string::npos) {
-      int i = stoi(parseLine(s,"<Status>", "</Status>"));
-      status = static_cast<e_status>(i-1);
+   //} else if(s.find("<Status>") != std::string::npos) {
+    //  int i = stoi(parseLine(s,"<Status>", "</Status>"));
+      //status = static_cast<e_status>(i-1);
    }
 }
 
 
-void CPrintedMedium::print() {
-   std::cout << "Anz. Seiten:  " << pages << std::endl;
+std::ostream & CPrintedMedium::print(std::ostream &ostr) {
+   ostr << "Anz. Seiten:  " << pages << std::endl;
+   return ostr;
 }
 
 void CBook::load(std::ifstream &file) {
@@ -55,10 +61,15 @@ void CBook::load(std::ifstream &file) {
    }
 }
 
-void CBook::print() {
-   std::cout << "Author:       " << author << std::endl;
-   CPrintedMedium::print();
-   CMedium::print();
+std::ostream &operator<<(std::ostream &ostr, CBook &med) {
+   return med.print(ostr);
+}
+
+std::ostream & CBook::print(std::ostream &ostr) {
+   CMedium::print(ostr);
+   CPrintedMedium::print(ostr);
+   ostr << "Author:       " << author << std::endl;
+   return ostr;
 }
 
 void CCD::load(std::ifstream &file) {
@@ -74,11 +85,16 @@ void CCD::load(std::ifstream &file) {
       }
    }
 }
-void CCD::print() {
-   std::cout << "Interpret:    " << artist << std::endl;
-   std::cout << "Anz. Tracks:  " << number_of_tracks << std::endl;
-   CMedium::print();
+std::ostream &operator<<(std::ostream &ostr, CCD &med) {
+   return med.print(ostr);
 }
+std::ostream & CCD::print(std::ostream &ostr) {
+   CMedium::print(ostr);
+   ostr << "Interpret:    " << artist << std::endl;
+   ostr << "Anz. Tracks:  " << number_of_tracks << std::endl;
+   return ostr;
+}
+
 
 void CDVD::load(std::ifstream &file) {
    std::string s;
@@ -95,12 +111,16 @@ void CDVD::load(std::ifstream &file) {
    }
 }
 
-void CDVD::print() {
-   std::cout << "Schauspieler: " << actors << std::endl;
-   std::cout << "Spieldauer:   ";
-   lenght.print();
-   std::cout << std::endl;
-   CMedium::print();
+std::ostream &operator<<(std::ostream &ostr, CDVD &med) {
+   return med.print(ostr);
+}
+
+std::ostream &CDVD::print(std::ostream &ostr){
+   CMedium::print(ostr);
+   ostr << "Schauspieler: " << actors << std::endl;
+   ostr << "Spieldauer:   " << lenght << std::endl;
+   return ostr;
+
 }
 
 void CMagazine::load(std::ifstream &file) {
@@ -116,10 +136,16 @@ void CMagazine::load(std::ifstream &file) {
       }
    }
 }
-void CMagazine::print() {
-   std::cout << "Designer:     " << designer << std::endl;
-   std::cout << "Anz. Seiten:  " << pages << std::endl;
-   CMedium::print();
+std::ostream &operator<<(std::ostream &ostr, CMagazine &med) {
+   return med.print(ostr);
+   //CMedium::print();
+}
+
+std::ostream &CMagazine::print(std::ostream &ostr){
+   CMedium::print(ostr);
+   ostr << "Designer:     " << designer << std::endl;
+   ostr << "Anz. Seiten:  " << pages << std::endl;
+   return ostr;
 }
 
 void CAudiobook::load(std::ifstream &file) {
@@ -142,11 +168,15 @@ void CAudiobook::load(std::ifstream &file) {
    }
 }
 
-void CAudiobook::print() {
-   std::cout << "Interpret:    " << artist << std::endl;
-   std::cout << "Anz. Tracks:  " << number_of_tracks << std::endl;
-   std::cout << "Anz. CDs:     " << number_of_cds << std::endl;
-   std::cout << "Autor:        " << author << std::endl;
-   std::cout << "Anz. Seiten:  " << pages << std::endl;
-   CMedium::print();
+std::ostream &operator<<(std::ostream &ostr, CAudiobook &med) {
+   return med.print(ostr);
+}
+std::ostream &CAudiobook::print(std::ostream &ostr){
+   CMedium::print(ostr);
+   ostr << "Interpret:    " << artist << std::endl;
+   ostr << "Anz. Tracks:  " << number_of_tracks << std::endl;
+   ostr << "Anz. CDs:     " << number_of_cds << std::endl;
+   ostr << "Autor:        " << author << std::endl;
+   ostr << "Anz. Seiten:  " << pages << std::endl;
+   return ostr;
 }

@@ -1,0 +1,232 @@
+# depslib dependency file v1.0
+1686588081 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\caddress.cpp
+	"parse.h"
+	"caddress.h"
+
+1684157617 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\parse.h
+	<iostream>
+	<string>
+
+1686588156 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\caddress.h
+	<fstream>
+	<iostream>
+	<string>
+
+1686598506 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clibrary.cpp
+	"parse.h"
+	"clibrary.h"
+
+1686587316 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clibrary.h
+	<vector>
+	<iostream>
+	<string>
+	<fstream>
+	"caddress.h"
+	"cperson.h"
+	"cmedium.h"
+
+1686597793 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cperson.h
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	"cdate.h"
+	"caddress.h"
+	"cloan.h"
+
+1686589770 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cdate.h
+	<iomanip>
+	<fstream>
+	<iostream>
+	<ctime>
+
+1686657216 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cmedium.h
+	<iostream>
+	<fstream>
+	<string>
+	"parse.h"
+	"clocation.h"
+	"ctime.h"
+
+1686593967 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clocation.h
+	<fstream>
+	<cstdlib>
+	<iostream>
+	<string>
+
+1686592780 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\ctime.h
+	<iostream>
+	<fstream>
+	<ctime>
+	"parse.h"
+
+1686597910 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clibrarypool.cpp
+	<iostream>
+	"clibrarypool.h"
+	"parse.h"
+
+1686587223 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clibrarypool.h
+	<vector>
+	<iostream>
+	<string>
+	<fstream>
+	"clibrary.h"
+	"cperson.h"
+	"cloan.h"
+
+1686594288 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cmedium.cpp
+	"cmedium.h"
+
+1686594551 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cperson.cpp
+	<iomanip>
+	<iostream>
+	"cperson.h"
+	"parse.h"
+
+1686592935 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\ctime.cpp
+	<iomanip>
+	<iostream>
+	"ctime.h"
+
+1686586133 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\main.cpp
+	<iostream>
+	"clibrarypool.h"
+
+1684157635 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\parse.cpp
+	"parse.h"
+
+1686598303 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cdate.cpp
+	"parse.h"
+	"cdate.h"
+
+1686598469 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cloan.h
+	<fstream>
+	"cperson.h"
+	"cmedium.h"
+
+1686481934 c:\users\ossi\google drive\bht 3. semester\oop\ueb06\test.h
+	<fstream>
+	"clibrarypool.h"
+	"cperson.h"
+	"cmedium.h"
+	"cdate.h"
+
+1686598468 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\cloan.cpp
+	"cloan.h"
+
+1686594010 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb06\clocation.cpp
+	"clocation.h"
+	"parse.h"
+
+1686588081 source:g:\my drive\bht 3. semester\oop\ueb06\caddress.cpp
+	"parse.h"
+	"caddress.h"
+
+1684157617 g:\my drive\bht 3. semester\oop\ueb06\parse.h
+	<iostream>
+	<string>
+
+1686588156 g:\my drive\bht 3. semester\oop\ueb06\caddress.h
+	<fstream>
+	<iostream>
+	<string>
+
+1686598303 source:g:\my drive\bht 3. semester\oop\ueb06\cdate.cpp
+	"parse.h"
+	"cdate.h"
+
+1686589770 g:\my drive\bht 3. semester\oop\ueb06\cdate.h
+	<iomanip>
+	<fstream>
+	<iostream>
+	<ctime>
+
+1686598506 source:g:\my drive\bht 3. semester\oop\ueb06\clibrary.cpp
+	"parse.h"
+	"clibrary.h"
+
+1686587316 g:\my drive\bht 3. semester\oop\ueb06\clibrary.h
+	<vector>
+	<iostream>
+	<string>
+	<fstream>
+	"caddress.h"
+	"cperson.h"
+	"cmedium.h"
+
+1686597793 g:\my drive\bht 3. semester\oop\ueb06\cperson.h
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	"cdate.h"
+	"caddress.h"
+	"cloan.h"
+
+1686598469 g:\my drive\bht 3. semester\oop\ueb06\cloan.h
+	<fstream>
+	"cperson.h"
+	"cmedium.h"
+
+1686936555 g:\my drive\bht 3. semester\oop\ueb06\cmedium.h
+	<iostream>
+	<fstream>
+	<string>
+	"parse.h"
+	"clocation.h"
+	"ctime.h"
+
+1686593967 g:\my drive\bht 3. semester\oop\ueb06\clocation.h
+	<fstream>
+	<cstdlib>
+	<iostream>
+	<string>
+
+1686592780 g:\my drive\bht 3. semester\oop\ueb06\ctime.h
+	<iostream>
+	<fstream>
+	<ctime>
+	"parse.h"
+
+1686597910 source:g:\my drive\bht 3. semester\oop\ueb06\clibrarypool.cpp
+	<iostream>
+	"clibrarypool.h"
+	"parse.h"
+
+1686587223 g:\my drive\bht 3. semester\oop\ueb06\clibrarypool.h
+	<vector>
+	<iostream>
+	<string>
+	<fstream>
+	"clibrary.h"
+	"cperson.h"
+	"cloan.h"
+
+1686598468 source:g:\my drive\bht 3. semester\oop\ueb06\cloan.cpp
+	"cloan.h"
+
+1686594010 source:g:\my drive\bht 3. semester\oop\ueb06\clocation.cpp
+	"clocation.h"
+	"parse.h"
+
+1686594551 source:g:\my drive\bht 3. semester\oop\ueb06\cperson.cpp
+	<iomanip>
+	<iostream>
+	"cperson.h"
+	"parse.h"
+
+1686592935 source:g:\my drive\bht 3. semester\oop\ueb06\ctime.cpp
+	<iomanip>
+	<iostream>
+	"ctime.h"
+
+1686586133 source:g:\my drive\bht 3. semester\oop\ueb06\main.cpp
+	<iostream>
+	"clibrarypool.h"
+
+1684157635 source:g:\my drive\bht 3. semester\oop\ueb06\parse.cpp
+	"parse.h"
+
+1686937754 source:g:\my drive\bht 3. semester\oop\ueb06\cmedium.cpp
+	"cmedium.h"
+

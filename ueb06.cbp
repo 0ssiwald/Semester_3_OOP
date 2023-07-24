@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="ueb05" />
+		<Option title="ueb06" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -40,6 +40,9 @@
 		<Unit filename="clibrary.h" />
 		<Unit filename="clibrarypool.cpp" />
 		<Unit filename="clibrarypool.h" />
+		<Unit filename="cloan.cpp" />
+		<Unit filename="cloan.h" />
+		<Unit filename="clocation.cpp" />
 		<Unit filename="clocation.h" />
 		<Unit filename="cmedium.cpp" />
 		<Unit filename="cmedium.h" />

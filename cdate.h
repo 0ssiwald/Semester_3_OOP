@@ -28,8 +28,12 @@ public:
    int getYear() const {
       return year;
     }
-    void print();
+    friend std::ostream &operator<<(std::ostream &, const CDate &);
+
     void load(std::ifstream &);
+    // To add days to a date
+    // Works only for number < 28!!!!
+    CDate operator+(int);
 };
 
 #endif // CDATE_H_INCLUDED

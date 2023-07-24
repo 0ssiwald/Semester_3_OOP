@@ -17,8 +17,8 @@ public:
     // Constructor to set a specific time
    CTime(int h, int m, int s = 0)
       : hour(h), minute(m), second(s) {}
-    // Method to print the Time
-   void print();
+
+   friend std::ostream &operator<<(std::ostream &, CTime &);
 
    void load(std::ifstream &file) {
    hour = 0; minute = 0; second = 0;

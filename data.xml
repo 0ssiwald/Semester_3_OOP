@@ -36,7 +36,6 @@
     <Rack>Computer</Rack>
    </Location>
    <FSK>0</FSK>
-   <Status>2</Status>
   </Book>
   <Book>
    <Author>Edgar Wallace</Author>
@@ -48,7 +47,6 @@
     <Rack>Krimi</Rack>
    </Location>
    <FSK>12</FSK>
-   <Status>1</Status>
   </Book>
   <Manager>
    <Name>Peter Mueller</Name>
@@ -103,7 +101,6 @@
     <Section>Kunst</Section>
    </Location>
    <FSK>0</FSK>
-   <Status>1</Status>
   </Magazine>
   <DVD>
    <Actors>Klaus Kinski, Eddi Arend</Actors>
@@ -120,7 +117,6 @@
     <Rack>Horror</Rack>
    </Location>
    <FSK>16</FSK>
-   <Status>2</Status>
   </DVD>
   <CD>
    <Title>Bravo Hits 2015</Title>
@@ -129,7 +125,6 @@
     <Section>CDs</Section>
     <Rack>Musik</Rack>
    </Location>
-   <Status>1</Status>
    <Interpret>Verschiedene</Interpret>
    <Tracks>21</Tracks>
   </CD>
@@ -141,7 +136,6 @@
     <Section>CDs</Section>
     <Rack>Audiobuecher</Rack>
    </Location>
-   <Status>1</Status>
    <Interpret>Leonard Mlodinow</Interpret>
    <Tracks>15</Tracks>
    <Pages>560</Pages>
@@ -182,4 +176,40 @@
    </Date>
   </Birthday>
  </Customer>
+ <Loan>
+  <Signature>He83</Signature>
+  <CustomerNr>M179</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>22</Day>
+    <Month>5</Month>
+    <Year>2023</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>21</LoanDays>
+ </Loan>
+ <Loan>
+  <Signature>WW175</Signature>
+  <CustomerNr>M179</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>23</Day>
+    <Month>5</Month>
+    <Year>2023</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>14</LoanDays>
+ </Loan>
+ <Loan>
+  <Signature>UNI123</Signature>
+  <CustomerNr>S317</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>24</Day>
+    <Month>5</Month>
+    <Year>2023</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>28</LoanDays>
+ </Loan>
 </LibraryPool>

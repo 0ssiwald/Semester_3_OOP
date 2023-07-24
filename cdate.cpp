@@ -11,10 +11,11 @@ CDate::CDate() {
    year = timePtr->tm_year + 1900;
 }
 
- void CDate::print() {
-    char old = std::cout.fill();
-    std::cout << std::setfill('0') << std::setw(2) << day << "." << std::setw(2) << month << "." << year;
-    std::cout << std::setfill(old);
+std::ostream &operator<<(std::ostream &ostr, const CDate &date) {
+    char old = ostr.fill();
+    ostr << std::setfill('0') << std::setw(2) << date.day << "." << std::setw(2) << date.month << "." << date.year;
+    ostr << std::setfill(old);
+    return ostr;
 }
 
 void CDate::load(std::ifstream &file) {
@@ -30,5 +31,51 @@ void CDate::load(std::ifstream &file) {
             year = stoi(parseLine(s,"<Year>", "</Year>"));
          }
       }
+   }
+}
+
+// Only works for number < 28
+CDate CDate::operator+(int number) {
+   int is_leap_year;
+   if(year % 4 == 0 && year % 100 == 1)
+      is_leap_year = 1;
+   else if(year % 400 == 0)
+      is_leap_year = 1;
+   else
+      is_leap_year = 0;
+
+   switch(month){
+   case 1:
+   case 3:
+   case 5:
+   case 7:
+   case 8:
+   case 10: if(day + number <= 31)
+               return CDate(day + number, month, year);
+            else
+               return CDate(day + (31 % number), month + 1, year);
+   case 12: if(day + number <= 31)
+               return CDate(day + number, month, year);
+            else
+               return CDate(day + (31 % number), month, year + 1);
+   case 4:
+   case 6:
+   case 9:
+   case 11: if(day + number <= 30)
+               return CDate(day + number, month, year);
+            else
+               return CDate(day + (30 % number), month + 1, year);
+   case 2:  if(is_leap_year == 0){
+               if(day + number <= 28)
+                  return CDate(day + number, month, year);
+               else
+                  return CDate(day + (28 % number), month + 1, year);
+            } else {
+               if(day + number <= 29)
+                  return CDate(day + number, month, year);
+               else
+                  return CDate(day + (29 % number), month + 1, year);
+            }
+   default: return CDate(day + number, month, year);
    }
 }

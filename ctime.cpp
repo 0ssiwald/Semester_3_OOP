@@ -11,9 +11,9 @@ CTime::CTime() {
    second = timePtr->tm_sec;
 }
 
-void CTime::print() {
-   char old = std::cout.fill();
-   std::cout << std::setfill('0') << std::setw(2) << hour << "." << std::setw(2) << minute << "." << std::setw(2) << second;
-   std::cout << std::setfill(old);
+std::ostream &operator<<(std::ostream &ostr, CTime &time) {
+   char old = ostr.fill();
+   ostr << std::setfill('0') << std::setw(2) << time.hour << "." << std::setw(2) << time.minute << "." << std::setw(2) << time.second;
+   ostr << std::setfill(old);
 }
 

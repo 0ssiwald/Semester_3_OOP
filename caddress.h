@@ -18,10 +18,8 @@ public:
       zipcode = z;
       town = t;
    }
+   friend std::ostream &operator<<(std::ostream &, const CAddress &);
 
-   void print() {
-      std::cout << street << " " << number << "; " << zipcode << " " << town;
-   }
    void load(std::ifstream &);
 };
 

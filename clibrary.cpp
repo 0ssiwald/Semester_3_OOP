@@ -2,19 +2,15 @@
 #include "clibrary.h"
 
 
-void CLibrary::print() {
-   std::cout << "Buecherei Filiale " << name << std::endl;
-   address->print();
-   std::cout << std::endl << "Filialleiter: ";
-   manager->print();
-   std::cout << std::endl << std::endl;
-   std::cout << "Es stehen " << media.size() << " Medien zur Verfuegung: " << std::endl;
-   for(unsigned int i = 0; i < media.size(); i++) {
-      std::cout << "\nMedium Nr. " << i+1 << std::endl;
-      media[i]->print();
-      std::cout << std::endl;
-   }
+std::ostream &operator<<(std::ostream &ostr, const CLibrary &lib) {
+   ostr << "Buecherei Filiale " << lib.name << std::endl;
+   ostr << *lib.address << std::endl << "Filialleiter: " << *lib.manager << std::endl << std::endl;
+   ostr << "Es stehen " << lib.media.size() << " Medien zur Verfuegung: " << std::endl;
+   for(unsigned int i = 0; i < lib.media.size(); i++)
+      ostr << "\nMedium Nr. " << i+1 << std::endl << *lib.media[i] << std::endl;
+   return ostr;
 }
+
 
 void CLibrary::load(std::ifstream &file) {
    std::string s;
@@ -54,3 +50,6 @@ void CLibrary::load(std::ifstream &file) {
       }
    }
 }
+
+
+

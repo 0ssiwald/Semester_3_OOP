@@ -34,8 +34,10 @@ public:
    void add(CMedium *m) {
       media.push_back(m);
    }
-
-   void print();
+   std::vector<CMedium*> getMedia() {
+      return media;
+   }
+   friend std::ostream &operator<<(std::ostream &, const CLibrary &);
 
    void load(std::ifstream &);
 };

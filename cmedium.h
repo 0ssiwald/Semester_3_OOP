@@ -21,7 +21,15 @@ public:
       std::cout << "Das Medium '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    std::string getStatus();
-   virtual void print();
+   void setStatus(int i) {
+      status = static_cast<e_status>(i);
+   }
+   std::string getSignature() {
+      return signature;
+   }
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CMedium &);
+
    void parseMedium(std::ifstream &, std::string);
 
 protected:
@@ -38,7 +46,7 @@ public:
    ~CPrintedMedium() {
       std::cout << "Das Printed-Medium '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
-   virtual void print();
+   virtual std::ostream &print(std::ostream &);
 };
 
 class CCD: virtual public CMedium {
@@ -50,7 +58,9 @@ public:
    std::cout << "Die CD '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    void load(std::ifstream &);
-   void print();
+
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CCD &);
 };
 
 class CDVD: public CMedium {
@@ -61,7 +71,8 @@ public:
    std::cout << "Die DVD '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    void load(std::ifstream &);
-   void print();
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CDVD &);;
 };
 
 class CMagazine: public CPrintedMedium {
@@ -71,7 +82,8 @@ public:
    std::cout << "Das Magazin '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    void load(std::ifstream &);
-   void print();
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CMagazine &);
 };
 class CBook: virtual public CPrintedMedium {
 protected:
@@ -81,7 +93,8 @@ public:
    std::cout << "Das Buch'" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    void load(std::ifstream &);
-   void print();
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CBook &);
 };
 
 class CAudiobook: public CBook, public CCD {
@@ -91,7 +104,8 @@ public:
    std::cout << "Das Audiobuch '" << title << "' mit der Signatur '" << signature << "' wird vernichtet!" << std::endl;
    }
    void load(std::ifstream &);
-   void print();
-} ;
+   virtual std::ostream &print(std::ostream &);
+   friend std::ostream &operator<<(std::ostream &, CAudiobook &);
+};
 
 #endif // CMEDIUM_H_INCLUDED
