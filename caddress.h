@@ -20,7 +20,7 @@ public:
    }
 
    void print() {
-      std::cout << street << number << std::endl << zipcode << " " << town;
+      std::cout << street << " " << number << "; " << zipcode << " " << town;
    }
    void load(std::ifstream &);
 };

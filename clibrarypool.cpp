@@ -9,7 +9,7 @@
 void CLibraryPool::print() {
    std::cout << name << std::endl << "Leitung ";
    boss->print();
-   std::cout << std::endl << "Zum Buechereiverband gehoeren " << stores.size() << " Filialen:\n" << std::endl;
+   std::cout << std::endl << "\nZum Buechereiverband gehoeren " << stores.size() << " Filialen:\n" << std::endl;
    for(unsigned int i = 0; i < stores.size(); i++) {
       stores[i]->print();
       std::cout << std::endl;
@@ -31,17 +31,17 @@ CLibraryPool::CLibraryPool(std::string file_name) {
    if(file) {
       while(std::getline(file, s)) {
          if(s.find("<Chairman>") != std::string::npos) {
-            CPerson *P = new CPerson;
-            P->load(file);
-            boss = P;
+            CEmployee *pE = new CEmployee;
+            pE->load(file);
+            boss = pE;
          } else if(s.find("<Library>") != std::string::npos) {
-            CLibrary *L = new CLibrary;
-            L->load(file);
-            stores.push_back(L);
+            CLibrary *pL = new CLibrary;
+            pL->load(file);
+            stores.push_back(pL);
          } else if(s.find("<Customer>") != std::string::npos) {
-            CPerson *C = new CPerson;
-            C->load(file);
-            costumers.push_back(C);
+            CCustomer *pC = new CCustomer;
+            pC->load(file);
+            costumers.push_back(pC);
          } else if(s.find("<Name>") != std::string::npos) {
             name = parseLine(s, "<Name>", "</Name>");
          }

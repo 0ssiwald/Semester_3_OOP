@@ -10,15 +10,15 @@
 
 class CLibraryPool {
    std::string name;
-   CPerson *boss;
+   CEmployee *boss;
    std::vector<CLibrary*> stores;
-   std::vector<CPerson*> costumers;
+   std::vector<CCustomer*> costumers;
 
 public:
-   CLibraryPool(std::string n, CPerson *b, std::vector<CLibrary*> s, std::vector<CPerson*> c)
+   CLibraryPool(std::string n, CEmployee *b, std::vector<CLibrary*> s, std::vector<CCustomer*> c)
       : name(n), boss(b), stores(s), costumers(c)
       {}
-   CLibraryPool(std::string n, CPerson *b)
+   CLibraryPool(std::string n, CEmployee *b)
       : name(n), boss(b)
       {}
    // Constructor to read a file
@@ -29,7 +29,7 @@ public:
    void add(CLibrary *store) {
       stores.push_back(store);
    }
-   void add(CPerson *costumer) {
+   void add(CCustomer *costumer) {
       costumers.push_back(costumer);
    }
    void print();

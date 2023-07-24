@@ -13,21 +13,23 @@
 class CLibrary {
    std::string name;
    CAddress *address;
-   CPerson *person;
+   CEmployee *manager;
    std::vector<CMedium*> media;
 
 public:
-   CLibrary(std::string n, CAddress *a, CPerson *p, std::vector<CMedium*> m)
-      : name(n), address(a), person(p), media(m)
+   CLibrary(std::string n, CAddress *a, CEmployee *man, std::vector<CMedium*> med)
+      : name(n), address(a), manager(man), media(med)
       {}
-   CLibrary(std::string n, CAddress *a, CPerson *p)
-      : name(n), address(a), person(p)
+   CLibrary(std::string n, CAddress *a, CEmployee *m)
+      : name(n), address(a), manager(m)
       {}
    CLibrary()
       {}
    ~CLibrary() {
          delete address;
-         delete person;
+         delete manager;
+         for(unsigned int i = 0; i < media.size(); i++)
+            delete media[i];
       }
    void add(CMedium *m) {
       media.push_back(m);
