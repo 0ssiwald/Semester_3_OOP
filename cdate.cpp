@@ -1,5 +1,4 @@
-#include <iomanip>
-#include <iostream>
+#include "parse.h"
 #include "cdate.h"
 
 CDate::CDate() {
@@ -16,4 +15,20 @@ CDate::CDate() {
     char old = std::cout.fill();
     std::cout << std::setfill('0') << std::setw(2) << day << "." << std::setw(2) << month << "." << year;
     std::cout << std::setfill(old);
+}
+
+void CDate::load(std::ifstream &file) {
+   std::string s;
+   if(file){
+      while(s.find("</Date>") == std::string::npos) {
+         std::getline(file, s);
+         if(s.find("<Day>") != std::string::npos) {
+            day = stoi(parseLine(s,"<Day>", "</Day>"));
+         } else if(s.find("<Month>") != std::string::npos) {
+            month = stoi(parseLine(s,"<Month>", "</Month>"));
+         } else if(s.find("<Year>") != std::string::npos) {
+            year = stoi(parseLine(s,"<Year>", "</Year>"));
+         }
+      }
+   }
 }

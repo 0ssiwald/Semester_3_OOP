@@ -1,8 +1,10 @@
-#include <iostream>
-#include <ctime>
-
 #ifndef CDATE_H_INCLUDED
 #define CDATE_H_INCLUDED
+
+#include <iomanip>
+#include <fstream>
+#include <iostream>
+#include <ctime>
 
 class CDate
 {
@@ -27,6 +29,7 @@ public:
       return year;
     }
     void print();
+    void load(std::ifstream &);
 };
 
 #endif // CDATE_H_INCLUDED

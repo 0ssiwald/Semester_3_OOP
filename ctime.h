@@ -1,8 +1,9 @@
-#include <iostream>
-#include <ctime>
-
 #ifndef CTIME_H_INCLUDED
 #define CTIME_H_INCLUDED
+
+#include <iostream>
+#include <fstream>
+#include <ctime>
 
 class CTime
 {

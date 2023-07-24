@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "cdate.h"
 #include "caddress.h"
 
@@ -16,17 +17,15 @@ public:
    CPerson(std::string n, CAddress a, CDate b)
       : name(n), address(a), birthday(b)
       {}
+   CPerson()
+      {}
 
    ~CPerson() {
       std::cout << "Die Person '" << name << "' wird vernichtet!\n";
    }
 
-   void print() {
-      std::cout << name <<  std::endl;
-      address.print();
-      std::cout << std::endl << "* ";
-      birthday.print();
-   }
+   void print();
+   void load(std::ifstream &);
 };
 
 #endif

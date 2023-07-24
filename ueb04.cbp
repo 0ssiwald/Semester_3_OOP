@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="ueb03" />
+		<Option title="ueb04" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="caddress.cpp" />
 		<Unit filename="caddress.h" />
 		<Unit filename="cdate.cpp" />
 		<Unit filename="cdate.h" />
@@ -42,10 +43,13 @@
 		<Unit filename="clocation.h" />
 		<Unit filename="cmedium.cpp" />
 		<Unit filename="cmedium.h" />
+		<Unit filename="cperson.cpp" />
 		<Unit filename="cperson.h" />
 		<Unit filename="ctime.cpp" />
 		<Unit filename="ctime.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="parse.cpp" />
+		<Unit filename="parse.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "clibrary.h"
 #include "cperson.h"
 
@@ -20,6 +21,11 @@ public:
    CLibraryPool(std::string n, CPerson *b)
       : name(n), boss(b)
       {}
+   // Constructor to read a file
+   CLibraryPool(std::string);
+   ~CLibraryPool();
+
+
    void add(CLibrary *store) {
       stores.push_back(store);
    }

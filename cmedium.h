@@ -2,7 +2,9 @@
 #define CMEDIUM_H_INCLUDED
 
 #include <iostream>
+#include <fstream>
 #include <string>
+#include "parse.h"
 #include "clocation.h"
 
 
@@ -13,11 +15,13 @@ public:
    CMedium(std::string tit, std::string sig, CLocation pl, int rat, e_status sta)
       : title(tit), signature(sig), place(pl), age_rating(rat), status(sta)
       {}
-   ~CMedium() {
+   CMedium() {}
+   ~CMedium() { // warum wird der nicht aufgerufen??????????????????????
       std::cout << "Das Medium '" << title << "' wird vernichtet!\n";
    }
    std::string getStatus();
    void print();
+   void load(std::ifstream &);
 
 protected:
    std::string title, signature;
