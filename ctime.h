@@ -1,52 +1,36 @@
 #include <iostream>
 #include <ctime>
 
+#ifndef CTIME_H_INCLUDED
+#define CTIME_H_INCLUDED
+
 class CTime
 {
 private:
-    int hour, min, sec;
+    int hour, minute, second;
 
 public:
     // Constructor to get the current time
-    CTime() {
+    CTime()
+    {
         time_t t = time(NULL);
         tm *timePtr = localtime(&t);
 
         hour = timePtr->tm_hour;
-        min = timePtr->tm_min;
-        sec = timePtr->tm_sec;
+        minute = timePtr->tm_min;
+        second = timePtr->tm_sec;
     }
     // Constructor to set a specific time
-    CTime(int h, int m, int s = 0) {
-        hour = h;
-        min = m;
-        sec = s;
-    }
-   void setTime() {
-      time_t t = time(NULL);
-      tm *timePtr = localtime(&t);
+    CTime(int h, int m, int s = 0)
+      : hour(h), minute(m), second(s)
+      {}
 
-      hour = timePtr->tm_hour;
-      min = timePtr->tm_min;
-      sec = timePtr->tm_sec;
-   }
-   void setTime(int h, int m, int s){
-      hour = h;
-      min = m;
-      sec = s;
-   }
-   int getSec() const {
-      return sec;
-    }
-   int getMin() const {
-      return min;
-    }
-   int getHour() const {
-      return hour;
-    }
     // Method to print the Time
-    void print() {
-        printf("%02d:%02d:%02d", hour, min, sec);
-        // std::cout << hour << ":" << min << ":" << sec;
+    void print()
+    {
+        printf("%02d:%02d:%02d", hour, minute, second);
+        // std::cout << hour << ":" << minute << ":" << second;
     }
 };
+
+#endif

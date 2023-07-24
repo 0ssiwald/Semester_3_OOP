@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1682145907 source:c:\users\ossi\google drive\bht 3. semester\oop\ueb02\main.cpp
+	<iostream>
+	"cdate.h"
+	"clocation.h"
+	"caddress.h"
+	"cperson.h"
+
+1682362268 c:\users\ossi\google drive\bht 3. semester\oop\ueb02\cdate.h
+	<iostream>
+	<ctime>
+
+1682361959 c:\users\ossi\google drive\bht 3. semester\oop\ueb02\clocation.h
+	<iostream>
+
+1682362383 c:\users\ossi\google drive\bht 3. semester\oop\ueb02\caddress.h
+	<iostream>
+
+1682362507 c:\users\ossi\google drive\bht 3. semester\oop\ueb02\cperson.h
+	<iostream>
+	"cdate.h"
+	"caddress.h"
+
