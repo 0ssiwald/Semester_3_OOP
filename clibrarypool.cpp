@@ -10,11 +10,11 @@ std::ostream &operator<<(std::ostream &ostr, const CLibraryPool &l_pool) {
    for(unsigned int i = 0; i < l_pool.stores.size(); i++)
       ostr << *l_pool.stores[i] << std::endl;
    ostr << std::endl << "Der Buechereiverband hat " << l_pool.costumers.size() << " Kunden:" << std::endl;
-   for(unsigned int i = 0; i < l_pool.costumers.size(); i++)
-      ostr << std::endl << *l_pool.costumers[i] << std::endl << std::endl;
+   for(auto it : l_pool.costumers)
+      ostr << std::endl << *it << std::endl << std::endl;
    ostr << "Folgende " << l_pool.loans.size() << " Medien sind ausgeliehen:" << std::endl;
-   for(unsigned int i = 0; i < l_pool.loans.size(); i++)
-      ostr << std::endl << *l_pool.loans[i] << std::endl;
+      for (auto it : l_pool.loans)
+      ostr << std::endl << *it << std::endl;
    return ostr;
 }
 
@@ -67,10 +67,10 @@ CLibraryPool::~CLibraryPool() {
    delete boss;
    for(unsigned int i = 0; i < stores.size(); i++)
       delete stores[i];
-   for(unsigned int i = 0; i < costumers.size(); i++)
-      delete costumers[i];
-   for(unsigned int i = 0; i < loans.size(); i++)
-      delete loans[i];
+   for(auto it : costumers)
+      delete it;
+   for(auto it : loans)
+      delete it;
 }
 
 

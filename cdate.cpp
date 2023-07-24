@@ -53,28 +53,28 @@ CDate CDate::operator+(int number) {
    case 10: if(day + number <= 31)
                return CDate(day + number, month, year);
             else
-               return CDate(day + (31 % number), month + 1, year);
+               return CDate(day - 31 + number, month + 1, year);
    case 12: if(day + number <= 31)
                return CDate(day + number, month, year);
             else
-               return CDate(day + (31 % number), month, year + 1);
+               return CDate(day - 31 + number, month, year + 1);
    case 4:
    case 6:
    case 9:
    case 11: if(day + number <= 30)
                return CDate(day + number, month, year);
             else
-               return CDate(day + (30 % number), month + 1, year);
+               return CDate(day - 30 + number, month + 1, year);
    case 2:  if(is_leap_year == 0){
                if(day + number <= 28)
                   return CDate(day + number, month, year);
                else
-                  return CDate(day + (28 % number), month + 1, year);
+                  return CDate(day - 28 + number, month + 1, year);
             } else {
                if(day + number <= 29)
                   return CDate(day + number, month, year);
                else
-                  return CDate(day + (29 % number), month + 1, year);
+                  return CDate(day - 29 + number, month + 1, year);
             }
    default: return CDate(day + number, month, year);
    }

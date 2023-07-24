@@ -8,6 +8,7 @@
 #include "clibrary.h"
 #include "cperson.h"
 #include "cloan.h"
+#include "clist.h"
 
 
 
@@ -16,10 +17,10 @@ class CLibraryPool {
    CEmployee *boss;
    std::vector<CLibrary*> stores;
    std::vector<CCustomer*> costumers;
-   std::vector<CLoan*> loans;
+   CList<CLoan*> loans;
 
 public:
-   CLibraryPool(std::string n, CEmployee *b, std::vector<CLibrary*> s, std::vector<CCustomer*> c, std::vector<CLoan*> l)
+   CLibraryPool(std::string n, CEmployee *b, std::vector<CLibrary*> s, std::vector<CCustomer*> c, CList<CLoan*> l)
       : name(n), boss(b), stores(s), costumers(c), loans(l)
       {}
    CLibraryPool(std::string n, CEmployee *b)
