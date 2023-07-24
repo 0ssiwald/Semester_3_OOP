@@ -1,20 +1,25 @@
-#include <iostream>
-#include "cdate.h"
-#include "caddress.h"
-
 #ifndef CPERSON_H_INCLUDED
 #define CPERSON_H_INCLUDED
 
+#include <iostream>
+#include <string>
+#include "cdate.h"
+#include "caddress.h"
+
 class CPerson{
 
-      string name;
+      std::string name;
       CAddress address;
       CDate birthday;
 
 public:
-   CPerson(string n, CAddress a, CDate b)
+   CPerson(std::string n, CAddress a, CDate b)
       : name(n), address(a), birthday(b)
       {}
+
+   ~CPerson() {
+      std::cout << "Die Person '" << name << "' wird vernichtet!\n";
+   }
 
    void print() {
       std::cout << name <<  std::endl;
